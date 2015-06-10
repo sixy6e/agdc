@@ -29,7 +29,7 @@
 
 from distutils.core import setup
 
-version = '1.1.1'
+version = '1.2.0rc'
 
 setup(name='agdc',
       version = version,
@@ -49,7 +49,7 @@ setup(name='agdc',
                  'bin/bulk_submit_pbs.sh'
                  ],
       requires = [
-                  'eotools',
+                  'eotools (==0.4)',
                   'psycopg2',
                   'gdal',
                   'numexpr',
