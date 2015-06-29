@@ -5,18 +5,21 @@
 * netCDF4
 * GeoTIff
 * ENVI
+* JPEG2000
 
 #### Compression
 * HDF5:		gzip/decompress
 * netCDF4:	gzip/decompress
 * GeoTiff:	LZW
 * ENVI:		None, gzip/decompress (compare raw vs compressed)
+* JPEG2000:	Wavelets (lossless)
 
 #### Python Api:
 * HDF5:		h5py
 * netCDF4:	netcdf4
 * GeoTiff:	GDAL, rasterio
 * ENVI:		GDAL (for uncompressed), gzip for compressed
+* JPEG2000:	GDAL, rasterio
 
 #### Read tests
 Each read that occurs will be from a randomly generated x,y location.
@@ -60,6 +63,8 @@ formats. Additionally, the HDF5 and netCDF4 file formats will also have a
 single file containing all groupd datasets. Code from the *tesserae* repository
 will be re-used in this instance, with some minor work involved to create a
 netCDF4 equivalent.
+HDF5 and netCDF4 will attempt to have chunk sizes as close as possible to the
+cache size of 1CPU on the raijin cluster at NCI.
 
 #### Interleaving
 Related to the _file structure_ topic, the files will be interleaved for each
@@ -76,6 +81,7 @@ HDF5 and NetCDF4 will mimic a BIL product.
 * netCDF4:	BSQ/BIL
 * GeoTiff:	BSQ/BIP (band/pixel according to the libtiff documentation)
 * ENVI:		BSQ/BIL/BIP
+* JPEG2000:	Library default
 
 #### Requirements
 All files must be able to be created in tiled/chunk fashion, i.e. not require
